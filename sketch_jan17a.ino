@@ -4,7 +4,6 @@
 #define led2 12
 #define led3 11
 
-int sound = 250;
 
 
 void setup() {
@@ -14,7 +13,7 @@ void setup() {
   pinMode(led, OUTPUT);
   pinMode(led2, OUTPUT);
   pinMode(led3, OUTPUT);
-  pinMode(buzzer, OUTPUT);
+ 
 
 }
 
@@ -29,58 +28,22 @@ void loop() {
   distance = (duration/2) / 29.1;
 
 
-  if (distance <= 30) {
+  if (distance > 5) {
     digitalWrite(led, HIGH);
-    sound = 250;
+    Serial.print("ITEM:");
+    Serial.println("Apple");
+    Serial.print("EXPIRES: February 14th , 2020");
+    delay(1000);
+  
 }
   else {
     digitalWrite(led,LOW);
   }
-  if (distance < 25) {
+  if (distance < 5 ) {
       digitalWrite(led2, HIGH);
-      sound = 260;
-}
-  else {
-      digitalWrite(led2, LOW);
-  }
-  if (distance < 20) {
-      digitalWrite(led3, HIGH);
-      sound = 270;
-} 
-  else {
-    digitalWrite(led3, LOW);
-  }
-  if (distance < 15) {
-    digitalWrite(led4, HIGH);
-    sound = 280;
-}
-  else {
-    digitalWrite(led4,LOW);
-  }
-  if (distance < 10) {
-    digitalWrite(led5, HIGH);
-    sound = 290;
-}
-  else {
-    digitalWrite(led5,LOW);
-  }
-  if (distance < 5) {
-    digitalWrite(led6, HIGH);
-    sound = 300;
-}
-  else {
-    digitalWrite(led6,LOW);
-  }
-
-  if (distance > 30 || distance <= 0){
-    Serial.println("Out of range");
-    noTone(buzzer);
-  }
-  else {
-    Serial.print(distance);
-    Serial.println(" cm");
-    tone(buzzer, sound);
-
-  }
-  delay(500);
+       digitalWrite(led, HIGH);
+    Serial.print("ITEM:");
+    Serial.println("Milk ");
+    delay(1000);
+     
 }
